@@ -1,3 +1,1 @@
-sample.rb:2: syntax error, unexpected end-of-input, expecting keyword_end
-  puts "GE"
-           ^
+HH

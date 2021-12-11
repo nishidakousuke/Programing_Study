@@ -17,7 +17,7 @@
 <h3>Rubyのソースコードを書いて実行してみよう!</h3>
 
 <form action="ruby_execute" method="post">
-<textarea rows="30" cols="90" name="code_contents"><% if(code_contents != null) { %><%= code_contents %><% } %></textarea><br>
+<textarea id="ruby_textarea" rows="30" cols="90" name="code_contents"><% if(code_contents != null) { %><%= code_contents %><% } %></textarea><br>
 <button type="button" onclick="submit();">実行する</button>
 </form>
 

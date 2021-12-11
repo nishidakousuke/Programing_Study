@@ -1,2 +1,4 @@
-if 1 == 1
-  puts "GE"
+name = "tanaka"
+if name == "tanaka"
+    puts "HH"
+end
