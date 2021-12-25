@@ -1,0 +1,1 @@
+sample1.rb:1:in `<main>': undefined method `add' for main:Object (NoMethodError)
