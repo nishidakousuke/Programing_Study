@@ -1,1 +1,1 @@
-/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Ruby/sample1a.rb:1:in `<main>': undefined method `add' for main:Object (NoMethodError)
+17

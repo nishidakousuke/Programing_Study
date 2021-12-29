@@ -28,6 +28,22 @@
     color: white;
 }
 
+#ruby_exe_result_box {
+    height: 250px;
+    background-color: #BAD3FF;
+    color: blue;
+}
+
+#ruby_help_box {
+    background-color: orange;
+    height: 380px;
+}
+
+#file_content {
+    background-color: pink;
+    height: 380px;
+}
+
 </style>
 <script src="<%= request.getContextPath() %>/js/Ruby/code_input.js"></script>
 </head>
@@ -36,6 +52,7 @@
 <% String ruby_result = (String)request.getAttribute("ruby_result"); %>
 <% String code_contents1 = (String)request.getAttribute("code_contents1"); %>
 <% String code_contents2 = (String)request.getAttribute("code_contents2"); %>
+<% String file_content = (String)request.getAttribute("file_content"); %>
 
 <p id="code_contents1" style="display: none;"><% if(code_contents1 != null) { %><%= code_contents1 %><% } %></p>
 <p id="code_contents2" style="display: none;"><% if(code_contents1 != null) { %><%= code_contents2 %><% } %></p>
@@ -55,14 +72,31 @@
 
 <div id="exe_result_ruby">
 <span>★実行結果★</span>
-<div style="height: 668px; background-color: #BAD3FF;">
+<div id="ruby_exe_result_box">
 <% if(ruby_result != null) { %>
 <%= ruby_result %>
 <% } %>
 </div>
+<form action="ruby_help" method="post" name="ruby_help_form">
+<span id="help_open">★ヘルプを開く★</span>
+<span id="help_all" style="display: none;">★ヘルプ一覧に戻る★</span>
+<div id="ruby_help_box">
+<ul id="ruby_help_ul">
+<li value="stdout">標準出力</li>
+<li value="array">配列</li>
+</ul>
+</div>
+<div id="file_content" style="display: none;">
+<% if(file_content != null) { %>
+<p id="file_content_flag"><%= file_content %></p>
+<% } %>
+</div>
+<input id="ruby_help_input" type="text" name="ruby_help_content" style="display: none;">
+<textarea id="ruby_help_source_save" name="ruby_help_source" style="display: none;"></textarea>
+<button id="ruby_help_button" type="button" onclick="submit();" style="display: none;"></button>
+</form>
 </div>
 </div>
-
 </body>
 </html>
 
