@@ -1,10 +1,10 @@
 <Context reloadable="true">
     <Resource
-        name="jdbc/cook"
+        name="jdbc/programming"
         auth="Container"
         type="javax.sql.DataSource"
         driverClassName="com.mysql.jdbc.Driver"
-        url="jdbc:mysql://tomcat_test_mysql_1/cook"
+        url="jdbc:mysql://tomcat_test_mysql_1/programming"
         username="root"
         password="rootpass"
     />
