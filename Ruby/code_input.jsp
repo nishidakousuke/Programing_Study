@@ -82,8 +82,11 @@
 <span id="help_all" style="display: none;">★ヘルプ一覧に戻る★</span>
 <div id="ruby_help_box">
 <ul id="ruby_help_ul">
-<li value="stdout">標準出力</li>
-<li value="array">配列</li>
+<li>標準出力</li>
+<ul>
+<li value="stdout_hello_world">Hello Worldをコンソールに出力する</li>
+</ul>
+<li>配列</li>
 </ul>
 </div>
 <div id="file_content" style="display: none;">

@@ -1,2 +1,3 @@
-puts "AAA"
-puts "BBB"
+a = ["AAA", "BBB"]
+
+p a

@@ -47,6 +47,7 @@
         }
     }
 
+    // Enterキー押下による送信をキャンセルする
     function handleKeydown(event) {
         let keycode = event.keyCode;
         if(keycode === 13) {
@@ -56,12 +57,14 @@
         }
     }
 
+    // ソースコードの内容を変数に保存してから、それらを連結した文字列をテキストエリアに設定してデータを送信する
     function ContentsConcatAndDelayTrans() {
         SourceSave();
         ruby_textarea.value = sample1_contents + "qwer" + sample2_contents;
         document.ruby_form.submit();
     }
 
+    // sample1.rbを開いたときに、sample2.rbの内容を変数に保存しておく
     function Sample1Open() {
         if(file_change_flag === 1) {return;}
         sample2_contents = ruby_textarea.value;
@@ -71,6 +74,7 @@
         sample2.style.color = 'black';
     }
 
+    // sample2.rbを開いたときに、sample1.rbの内容を変数に保存しておく
     function Sample2Open() {
         if(file_change_flag === 2) {return;}
         sample1_contents = ruby_textarea.value;
@@ -80,16 +84,20 @@
         sample1.style.color = 'black';
     }
 
+    // ヘルプの内容を取得し、それをinputエリアに設定してデータを送信する。変数に保存しているソースの内容も同時に送信する
     function HelpOpen(event) {
         let content = event.target.getAttribute("value");
+        if(content === null) {return;}
         let ruby_help_input = document.getElementById("ruby_help_input");
         let ruby_help_source_save = document.getElementById("ruby_help_source_save");
         ruby_help_input.value = content;
         SourceSave();
         ruby_help_source_save.value = sample1_contents + "qwer" + sample2_contents;
+        console.log(content);
         document.ruby_help_form.submit();
     }
 
+    // ソースの内容を変数に保存する
     function SourceSave() {
         if(file_change_flag === 1) {
             sample1_contents = ruby_textarea.value;
@@ -98,6 +106,7 @@
         }
     }
 
+    // ヘルプ一覧かヘルプ内容のどちらを表示するかを決定する
     function HelpORDescriptionOpen() {
         let ruby_help_box = document.getElementById("ruby_help_box");
         let file_content = document.getElementById("file_content");
@@ -115,6 +124,7 @@
         }
     }
 
+    // ヘルプの内容からヘルプ一覧に戻るときの処理
     function HelpOpenFromDescription() {
         let help_open = document.getElementById("help_open");
         help_open.style.display = "block";

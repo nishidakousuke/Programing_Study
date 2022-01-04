@@ -35,16 +35,17 @@ public class RubyExecute extends HttpServlet {
             rt.exec("/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Ruby/ruby_execute.sh");
 
             // ファイルが存在しなければここでストップ
-            while(!(result_file.exists())) {
+            while (!(result_file.exists())) {
             }
 
-            //Thread.sleep(1000);
+            // Thread.sleep(1000);
 
-            // この段階でruby_result2.txtが存在していないといけない。
-            FileReader fr = new FileReader("/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Ruby/ruby_result2.txt");
+            // この段階でruby_result3.txtが存在していないといけない。
+            FileReader fr = new FileReader(
+                    "/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Ruby/ruby_result3.txt");
             int c = fr.read();
-            while(c != -1) {
-                ruby_result = ruby_result + (char)c;
+            while (c != -1) {
+                ruby_result = ruby_result + (char) c;
                 c = fr.read();
             }
             fr.close();
