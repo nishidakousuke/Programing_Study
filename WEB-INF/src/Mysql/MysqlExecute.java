@@ -31,7 +31,7 @@ public class MysqlExecute extends HttpServlet {
             }
 
             FileReader fr1 = new FileReader(
-                    "/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Mysql/mysql_result2.txt");
+                    "/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Mysql/mysql_result3.txt");
             int c1 = fr1.read();
             while (c1 != -1) {
                 mysql_result = mysql_result + (char) c1;
@@ -40,7 +40,7 @@ public class MysqlExecute extends HttpServlet {
             fr1.close();
 
             FileReader fr2 = new FileReader(
-                    "/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Mysql/table_show2.txt");
+                    "/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Mysql/table_show3.txt");
             int c2 = fr2.read();
             while (c2 != -1) {
                 table_show = table_show + (char) c2;

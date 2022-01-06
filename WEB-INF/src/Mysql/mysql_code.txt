@@ -1,1 +1,1 @@
-select name from item;
+select * from item;

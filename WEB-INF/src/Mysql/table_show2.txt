@@ -1,1 +1,7 @@
-id	name<br>1	dog<br>2	cat<br>3	bird<br>4	bird<br>5	tiger<br>
+id  name            nickname
+1   dog
+2   cat
+3   bird
+4   bird
+5   tiger
+6   aaaaaaaaaaaaaa  ffffffff

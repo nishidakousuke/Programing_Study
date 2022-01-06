@@ -21,13 +21,15 @@ public class Forward extends HttpServlet {
             }
 
             FileReader fr = new FileReader(
-                    "/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Mysql/table_show2.txt");
+                    "/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Mysql/table_show3.txt");
             int c = fr.read();
             while (c != -1) {
                 table_show = table_show + (char) c;
                 c = fr.read();
             }
             fr.close();
+
+            System.out.println(table_show);
 
             rt.exec("/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Mysql/mysql_result_clear.sh");
 

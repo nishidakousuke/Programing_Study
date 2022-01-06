@@ -26,16 +26,23 @@
     display:inline-block;
     width:50%;
     float:right;
-    background-color: blue;
 }
 
 #sql_exe_result_box {
     background-color: green;
     width: 100%;
+    font-size: 18px;
+    padding-left: 10px;
 }
 
 #mysql_textarea {
     width: 98%;
+}
+
+#table_show {
+    background-color: blue;
+    font-size: 18px;
+    padding-left: 10px;
 }
 
 </style>
@@ -58,16 +65,24 @@
 </div>
 
 <div id="table_display_box">
+<span>AAA</span>
+<span>BBB</span>
+<div id="table_show">
+<pre>
 <% if(table_show != null) { %>
 <%= table_show %>
 <% } %>
+</pre>
+</div>
 </div>
 
 <div id="sql_exe_result_box">
 <h3>★実行結果★</h3>
+<pre>
 <% if(mysql_result != null) { %>
 <%= mysql_result %>
 <% } %>
+</pre>
 </div>
 
 </div>
