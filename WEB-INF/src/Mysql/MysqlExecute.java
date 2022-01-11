@@ -18,7 +18,9 @@ public class MysqlExecute extends HttpServlet {
         Runtime rt = Runtime.getRuntime();
         String mysql_result = "";
         String table_show = "";
+        String table_contents = "";
         try {
+            String table_name = request.getParameter("table_name");
             String code_contents = request.getParameter("code_contents");
             fw.write(code_contents);
             fw.flush();
@@ -48,11 +50,24 @@ public class MysqlExecute extends HttpServlet {
             }
             fr2.close();
 
+            FileReader fr3 = new FileReader(
+                    "/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Mysql/table_contents2.txt");
+            int c3 = fr3.read();
+            while (c3 != -1) {
+                table_contents = table_contents + (char) c3;
+                c3 = fr3.read();
+            }
+            fr3.close();
+
+            String[] table_names = table_contents.split("\n");
+
             rt.exec("/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Mysql/mysql_result_clear.sh");
 
             request.setAttribute("mysql_result", mysql_result);
             request.setAttribute("table_show", table_show);
             request.setAttribute("code_contents", code_contents);
+            request.setAttribute("table_names", table_names);
+            request.setAttribute("table_name", table_name);
             request.getRequestDispatcher("code_input.jsp").forward(request, response);
 
         } catch (Exception e) {

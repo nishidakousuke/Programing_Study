@@ -1,1 +1,1 @@
-id  name            nickname<br>1   dog<br>2   cat<br>3   bird<br>4   bird<br>5   tiger<br>6   aaaaaaaaaaaaaa  ffffffff<br>
+price<br>100<br>

@@ -12,7 +12,6 @@
 }
 
 #most_outer {
-    background-color: red;
     width: 100%;
 }
 
@@ -53,6 +52,10 @@
 <% String mysql_result = (String)request.getAttribute("mysql_result"); %>
 <% String table_show = (String)request.getAttribute("table_show"); %>
 <% String code_contents = (String)request.getAttribute("code_contents"); %>
+<% String[] table_names = (String[])request.getAttribute("table_names"); %>
+<% String table_name = (String)request.getAttribute("table_name"); %>
+
+<p id="current_table_name" style="display: none;"><% if(table_name != null) { %><%= table_name %><% } %></p>
 
 <h1 id="mysql_title" >MysqlでSQLを実行してみよう!</h3>
 
@@ -61,12 +64,24 @@
 <div id="sql_input_box">
 <form action="mysql_execute" method="post" name="mysql_form">
 <textarea id="mysql_textarea" rows="20" name="code_contents"><% if(code_contents != null) { %><%= code_contents %><% } %></textarea><br>
+<input id="mysql_execute_table_name" type="text" name="table_name" style="display: none;">
 <button id="mysql_exe_button" type="button" onclick="submit();">実行する</button>
+</form>
 </div>
 
 <div id="table_display_box">
-<span>AAA</span>
-<span>BBB</span>
+<% if(table_names != null) { %>
+<div id="table_name_box" count="<%= table_names.length %>">
+<% for(int i = 0; i < table_names.length; i++) { %>
+<span id="span_table_name<%= i %>"><%= table_names[i] %></span>
+<% } %>
+</div>
+<% } %>
+<form action="forward" method="get" name="table_change_form">
+<input id="table_change_input" type="text" name="table_change_name" style="display: none;">
+<input id="sql_code_input" type="text" name="code_contents" style="display: none;">
+<button id="table_change_button" type="button" onclick="submit();" style="display: none;"></button>
+</form>
 <div id="table_show">
 <pre>
 <% if(table_show != null) { %>
