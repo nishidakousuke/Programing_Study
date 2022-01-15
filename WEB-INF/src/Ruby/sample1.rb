@@ -1,3 +1,1 @@
-a = ["AAA", "BBB"]
-
-p a
+print(1235)

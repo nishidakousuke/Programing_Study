@@ -53,17 +53,23 @@
 <% String code_contents1 = (String)request.getAttribute("code_contents1"); %>
 <% String code_contents2 = (String)request.getAttribute("code_contents2"); %>
 <% String file_content = (String)request.getAttribute("file_content"); %>
+<% String program_language = (String)request.getAttribute("program_language"); %>
 
 <p id="code_contents1" style="display: none;"><% if(code_contents1 != null) { %><%= code_contents1 %><% } %></p>
 <p id="code_contents2" style="display: none;"><% if(code_contents1 != null) { %><%= code_contents2 %><% } %></p>
+<p id="program_language" style="display: none;"><% if(program_language != null) { %><%= program_language %><% } %></p>
 
-<h1 id="ruby_title">Rubyのソースコードを書いて実行してみよう!</h3>
+<h1 id="ruby_title">ソースコードを書いて実行してみよう!</h3>
 
 <div>
 <div id="exe_form_ruby">
+<form action="ruby_execute" method="post" name="ruby_form">
 <span id="sample1.rb">★sample1.rb</span>
 <span id="sample2.rb">★sample2.rb</span>
-<form action="ruby_execute" method="post" name="ruby_form">
+<select id="select_program_language" name="program_language">
+<option value="ruby">Ruby</option>
+<option value="python3">Python</option>
+</select>
 <textarea id="ruby_textarea" rows="35" name="code_contents"></textarea><br>
 <button id="ruby_exe_button" type="button" onclick="submit();" style="display: none;">実行する</button>
 <p id="dummy_button">実行する</p>

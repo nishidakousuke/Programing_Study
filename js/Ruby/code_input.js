@@ -135,6 +135,18 @@
         file_content.style.display = "none";
     }
 
+    // 実行したプログラミング言語を実行後に初期値として画面に表示させる
+    function ProgrammingLanguageFixed() {
+        let program_language = document.getElementById("program_language").innerHTML;
+        let select = document.getElementById("select_program_language");
+        let option_num = select.children.length;
+        for(let i = 0; i < option_num; i++) {
+            if(program_language === select.children[i].value) {
+                select.children[i].selected = true;
+            }
+        }
+    }
+
     window.addEventListener("DOMContentLoaded", () => {
         ruby_textarea = document.getElementById("ruby_textarea");
         dummy_button = document.getElementById("dummy_button");
@@ -154,6 +166,7 @@
         help_all = document.getElementById("help_all");
         help_all.addEventListener('click', HelpOpenFromDescription);
         HelpORDescriptionOpen();
+        ProgrammingLanguageFixed();
         // render();
     });
 

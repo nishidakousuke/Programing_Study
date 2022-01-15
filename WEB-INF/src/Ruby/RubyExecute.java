@@ -20,6 +20,7 @@ public class RubyExecute extends HttpServlet {
         Runtime rt = Runtime.getRuntime();
         String ruby_result = "";
         try {
+            String program_language = request.getParameter("program_language");
             String code_contents = request.getParameter("code_contents");
             int delimiter_index = code_contents.indexOf("qwer");
             String code_contents1 = code_contents.substring(0, delimiter_index);
@@ -32,7 +33,7 @@ public class RubyExecute extends HttpServlet {
             fw2.close();
 
             // rubyにて実行させる
-            rt.exec("/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Ruby/ruby_execute.sh");
+            rt.exec("/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Ruby/ruby_execute.sh " + program_language);
 
             // ファイルが存在しなければここでストップ
             while (!(result_file.exists())) {
@@ -56,6 +57,7 @@ public class RubyExecute extends HttpServlet {
             request.setAttribute("ruby_result", ruby_result);
             request.setAttribute("code_contents1", code_contents1);
             request.setAttribute("code_contents2", code_contents2);
+            request.setAttribute("program_language", program_language);
             request.getRequestDispatcher("code_input.jsp").forward(request, response);
 
         } catch (Exception e) {
