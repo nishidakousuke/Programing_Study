@@ -13,9 +13,9 @@ public class RubyExecute extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         FileWriter fw1 = new FileWriter(
-                "/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Ruby/sample1.rb", false); // ファイルは上書きするためfalseを指定
+                "/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Ruby/sample1", false); // ファイルは上書きするためfalseを指定
         FileWriter fw2 = new FileWriter(
-                "/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Ruby/sample2.rb", false);
+                "/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Ruby/sample2", false);
         File result_file = new File("/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Ruby/exists_flag.txt");
         Runtime rt = Runtime.getRuntime();
         String ruby_result = "";
@@ -53,6 +53,8 @@ public class RubyExecute extends HttpServlet {
 
             // 実行結果ファイルの内容をクリア
             rt.exec("/usr/local/tomcat/webapps/Programing_Study/WEB-INF/src/Ruby/ruby_result_clear.sh");
+
+            System.out.println(code_contents1);
 
             request.setAttribute("ruby_result", ruby_result);
             request.setAttribute("code_contents1", code_contents1);

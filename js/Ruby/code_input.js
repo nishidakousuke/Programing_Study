@@ -93,7 +93,6 @@
         ruby_help_input.value = content;
         SourceSave();
         ruby_help_source_save.value = sample1_contents + "qwer" + sample2_contents;
-        console.log(content);
         document.ruby_help_form.submit();
     }
 
@@ -147,6 +146,12 @@
         }
     }
 
+    function TextAreaCodeInsert() {
+        ruby_textarea.value = sample1_contents;
+        sample1.style.color = 'red';
+        console.log("test");
+    }
+
     window.addEventListener("DOMContentLoaded", () => {
         ruby_textarea = document.getElementById("ruby_textarea");
         dummy_button = document.getElementById("dummy_button");
@@ -156,10 +161,9 @@
         dummy_button.addEventListener('click', ContentsConcatAndDelayTrans);
         sample1.addEventListener('click', Sample1Open);
         sample2.addEventListener('click', Sample2Open);
-        sample1_contents = document.getElementById("code_contents1").innerHTML;
-        sample2_contents = document.getElementById("code_contents2").innerHTML;
-        ruby_textarea.value = sample1_contents;
-        sample1.style.color = 'red';
+        sample1_contents = document.getElementById("code_contents1").value;
+        sample2_contents = document.getElementById("code_contents2").value;
+        TextAreaCodeInsert();
         ruby_help_ul = document.getElementById("ruby_help_ul");
         ruby_help_ul.addEventListener('click', HelpOpen);
         file_content_flag = document.getElementById("file_content_flag");

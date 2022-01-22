@@ -1,1 +1,1 @@
-print(1235)
+puts "AAA"

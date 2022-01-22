@@ -55,8 +55,8 @@
 <% String file_content = (String)request.getAttribute("file_content"); %>
 <% String program_language = (String)request.getAttribute("program_language"); %>
 
-<p id="code_contents1" style="display: none;"><% if(code_contents1 != null) { %><%= code_contents1 %><% } %></p>
-<p id="code_contents2" style="display: none;"><% if(code_contents1 != null) { %><%= code_contents2 %><% } %></p>
+<textarea id="code_contents1" style="display: none;"><% if(code_contents1 != null) { %><%= code_contents1 %><% } %></textarea>
+<textarea id="code_contents2" style="display: none;"><% if(code_contents2 != null) { %><%= code_contents2 %><% } %></textarea>
 <p id="program_language" style="display: none;"><% if(program_language != null) { %><%= program_language %><% } %></p>
 
 <h1 id="ruby_title">ソースコードを書いて実行してみよう!</h3>
@@ -69,6 +69,7 @@
 <select id="select_program_language" name="program_language">
 <option value="ruby">Ruby</option>
 <option value="python3">Python</option>
+<option value="c">C言語</option>
 </select>
 <textarea id="ruby_textarea" rows="35" name="code_contents"></textarea><br>
 <button id="ruby_exe_button" type="button" onclick="submit();" style="display: none;">実行する</button>
