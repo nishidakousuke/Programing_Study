@@ -70,6 +70,7 @@
 <option value="ruby">Ruby</option>
 <option value="python3">Python</option>
 <option value="c">C言語</option>
+<option value="java">Java</option>
 </select>
 <textarea id="ruby_textarea" rows="35" name="code_contents"></textarea><br>
 <button id="ruby_exe_button" type="button" onclick="submit();" style="display: none;">実行する</button>

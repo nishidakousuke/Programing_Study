@@ -13,6 +13,14 @@ if [ ${PROGRAMLANGUAGE} = "c" ]; then
     else
         cat ${ruby_dir}/gcc_output.txt > ${ruby_dir}/ruby_result1.txt
     fi
+elif [ ${PROGRAMLANGUAGE} = "java" ]; then
+    cp ${ruby_dir}/sample1 ${ruby_dir}/Sample1.java
+    javac ${ruby_dir}/Sample1.java >& ${ruby_dir}/javac_output.txt
+    if [ $? = 0 ]; then
+        java -classpath ${ruby_dir} Sample1 > ${ruby_dir}/ruby_result1.txt
+    else
+        cat ${ruby_dir}/javac_output.txt > ${ruby_dir}/ruby_result1.txt
+    fi
 else
     ${PROGRAMLANGUAGE} ${ruby_dir}/sample1 >& ${ruby_dir}/ruby_result1.txt
 fi

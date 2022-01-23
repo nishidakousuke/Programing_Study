@@ -10,9 +10,33 @@
     let ruby_help_ul;
     let file_content_flag;
     let help_all;
+    let program_select;
 
     function render() {
         requestAnimationFrame(render);
+    }
+
+    function InitElemGet() {
+        ruby_textarea = document.getElementById("ruby_textarea");
+        dummy_button = document.getElementById("dummy_button");
+        sample1 = document.getElementById("sample1.rb");
+        sample2 = document.getElementById('sample2.rb');
+        sample1_contents = document.getElementById("code_contents1").value;
+        sample2_contents = document.getElementById("code_contents2").value;
+        ruby_help_ul = document.getElementById("ruby_help_ul");
+        file_content_flag = document.getElementById("file_content_flag");
+        help_all = document.getElementById("help_all");
+        program_select = document.getElementById("select_program_language");
+    }
+
+    function InitEventRegister() {
+        ruby_textarea.addEventListener('keydown', handleKeydown);
+        dummy_button.addEventListener('click', ContentsConcatAndDelayTrans);
+        sample1.addEventListener('click', Sample1Open);
+        sample2.addEventListener('click', Sample2Open);
+        ruby_help_ul.addEventListener('click', HelpOpen);
+        help_all.addEventListener('click', HelpOpenFromDescription);
+        program_select.addEventListener('change', ProgramSelect);
     }
 
     // 文字列を逆順にする
@@ -149,26 +173,33 @@
     function TextAreaCodeInsert() {
         ruby_textarea.value = sample1_contents;
         sample1.style.color = 'red';
-        console.log("test");
+    }
+
+    function ProgramSelect(event) {
+        let language = event.currentTarget.value;
+        if(language === "java") {
+            ruby_textarea.value = `import java.io.*;
+import java.util.*;
+
+public class Sample1 {
+    public static void main(String[] args) {
+        
+    }
+}`
+        } else if(language === "c") {
+            ruby_textarea.value = `#include <stdio.h>
+int main(int argc, char *argv[]) {
+    
+}`
+        } else {
+            ruby_textarea.value = "";
+        }
     }
 
     window.addEventListener("DOMContentLoaded", () => {
-        ruby_textarea = document.getElementById("ruby_textarea");
-        dummy_button = document.getElementById("dummy_button");
-        sample1 = document.getElementById("sample1.rb");
-        sample2 = document.getElementById('sample2.rb');
-        ruby_textarea.addEventListener('keydown', handleKeydown);
-        dummy_button.addEventListener('click', ContentsConcatAndDelayTrans);
-        sample1.addEventListener('click', Sample1Open);
-        sample2.addEventListener('click', Sample2Open);
-        sample1_contents = document.getElementById("code_contents1").value;
-        sample2_contents = document.getElementById("code_contents2").value;
+        InitElemGet();
+        InitEventRegister();
         TextAreaCodeInsert();
-        ruby_help_ul = document.getElementById("ruby_help_ul");
-        ruby_help_ul.addEventListener('click', HelpOpen);
-        file_content_flag = document.getElementById("file_content_flag");
-        help_all = document.getElementById("help_all");
-        help_all.addEventListener('click', HelpOpenFromDescription);
         HelpORDescriptionOpen();
         ProgrammingLanguageFixed();
         // render();
