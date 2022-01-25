@@ -17,31 +17,41 @@
 
 #sql_input_box {
     display:inline-block;
-    width:50%;
-    background-color: yellow;
+    width:35%;
 }
 
 #table_display_box {
     display:inline-block;
-    width:50%;
+    width:64%;
     float:right;
 }
 
 #sql_exe_result_box {
-    background-color: green;
-    width: 100%;
-    font-size: 18px;
+    overflow: auto;
+    background-color: #ffbeda;
+    color: #ff0461;
+    width: 99%;
+    font-size: 16px;
     padding-left: 10px;
+    height: 300px;
+    border: solid;
+    margin: -15px 0 0 0;
 }
 
 #mysql_textarea {
     width: 98%;
+    background-color: black;
+    color: white;
 }
 
 #table_show {
-    background-color: blue;
-    font-size: 18px;
+    overflow: auto;
+    background-color: #bad3ff;
+    color: #00008b;
+    font-size: 16px;
     padding-left: 10px;
+    height: 380px;
+    border: solid;
 }
 
 </style>
@@ -59,9 +69,12 @@
 
 <h1 id="mysql_title" >MysqlでSQLを実行してみよう!</h3>
 
+<p><a href="../index.jsp">タイトル画面に戻る</a></p>
+
 <div id="most_outer">
 
 <div id="sql_input_box">
+<span>sqlを記述する</span>
 <form action="mysql_execute" method="post" name="mysql_form">
 <textarea id="mysql_textarea" rows="20" name="code_contents"><% if(code_contents != null) { %><%= code_contents %><% } %></textarea><br>
 <input id="mysql_execute_table_name" type="text" name="table_name" style="display: none;">
@@ -91,8 +104,8 @@
 </div>
 </div>
 
-<div id="sql_exe_result_box">
 <h3>★実行結果★</h3>
+<div id="sql_exe_result_box">
 <pre>
 <% if(mysql_result != null) { %>
 <%= mysql_result %>

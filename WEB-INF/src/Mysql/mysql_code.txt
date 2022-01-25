@@ -1,1 +1,1 @@
-select price from product;
+insert into price values(null, 150);

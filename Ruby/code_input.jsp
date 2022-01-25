@@ -29,12 +29,14 @@
 }
 
 #ruby_exe_result_box {
+    overflow: auto;
     height: 250px;
     background-color: #BAD3FF;
     color: blue;
 }
 
 #ruby_help_box {
+    overflow: auto;
     background-color: orange;
     height: 380px;
 }
@@ -60,6 +62,8 @@
 <p id="program_language" style="display: none;"><% if(program_language != null) { %><%= program_language %><% } %></p>
 
 <h1 id="ruby_title">ソースコードを書いて実行してみよう!</h3>
+
+<p><a href="../index.jsp">タイトル画面に戻る</a></p>
 
 <div>
 <div id="exe_form_ruby">
