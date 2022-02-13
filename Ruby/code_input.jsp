@@ -38,12 +38,20 @@
 #ruby_help_box {
     overflow: auto;
     background-color: orange;
-    height: 380px;
+    height: 398px;
 }
 
 #file_content {
     background-color: pink;
     height: 380px;
+}
+
+#ruby_help_ul {
+    
+}
+
+#c_help_ul {
+    display: none;
 }
 
 </style>
@@ -100,13 +108,21 @@
 </ul>
 <li>配列</li>
 </ul>
+<ul id="c_help_ul">
+<li>出力関数</li>
+<ul>
+<li value="printf">printf(3)/fprintf(3)</li>
+</ul>
+<li>配列</li>
+</ul>
 </div>
 <div id="file_content" style="display: none;">
 <% if(file_content != null) { %>
-<p id="file_content_flag"><%= file_content %></p>
+<pre id="file_content_flag"><%= file_content %></pre>
 <% } %>
 </div>
 <input id="ruby_help_input" type="text" name="ruby_help_content" style="display: none;">
+<input id="program_language_help_input" type="text" name="program_language" style="display: none;">
 <textarea id="ruby_help_source_save" name="ruby_help_source" style="display: none;"></textarea>
 <button id="ruby_help_button" type="button" onclick="submit();" style="display: none;"></button>
 </form>

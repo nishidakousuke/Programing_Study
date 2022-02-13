@@ -7,10 +7,11 @@
     let file_change_flag = 1; // 最初はsample1.rbが開かれる設定
     let sample1;
     let sample2;
-    let ruby_help_ul;
+    let ruby_help_box;
     let file_content_flag;
     let help_all;
     let program_select;
+    let program_languages = ["ruby", "c"];
 
     function render() {
         requestAnimationFrame(render);
@@ -23,7 +24,7 @@
         sample2 = document.getElementById('sample2.rb');
         sample1_contents = document.getElementById("code_contents1").value;
         sample2_contents = document.getElementById("code_contents2").value;
-        ruby_help_ul = document.getElementById("ruby_help_ul");
+        ruby_help_box = document.getElementById("ruby_help_box");
         file_content_flag = document.getElementById("file_content_flag");
         help_all = document.getElementById("help_all");
         program_select = document.getElementById("select_program_language");
@@ -34,7 +35,7 @@
         dummy_button.addEventListener('click', ContentsConcatAndDelayTrans);
         sample1.addEventListener('click', Sample1Open);
         sample2.addEventListener('click', Sample2Open);
-        ruby_help_ul.addEventListener('click', HelpOpen);
+        ruby_help_box.addEventListener('click', HelpOpen);
         help_all.addEventListener('click', HelpOpenFromDescription);
         program_select.addEventListener('change', ProgramSelect);
     }
@@ -149,13 +150,14 @@
 
     // ヘルプの内容からヘルプ一覧に戻るときの処理
     function HelpOpenFromDescription() {
-        let help_open = document.getElementById("help_open");
-        help_open.style.display = "block";
+        document.getElementById("help_open").style.display = "block";
         help_all.style.display = "none";
-        let ruby_help_box = document.getElementById("ruby_help_box");
-        ruby_help_box.style.display = "block";
-        let file_content = document.getElementById("file_content");
-        file_content.style.display = "none";
+        document.getElementById("ruby_help_box").style.display = "block";
+        document.getElementById("file_content").style.display = "none";
+        document.getElementById("ruby_help_ul").style.display = "none";
+        let selected_language = document.getElementById("program_language").innerHTML;
+        document.getElementById(`${selected_language}_help_ul`).style.display = "block";
+        document.getElementById("program_language_help_input").value = selected_language;
     }
 
     // 実行したプログラミング言語を実行後に初期値として画面に表示させる
@@ -175,8 +177,7 @@
         sample1.style.color = 'red';
     }
 
-    function ProgramSelect(event) {
-        let language = event.currentTarget.value;
+    function FrameWorkInsert(language) {
         if(language === "java") {
             ruby_textarea.value = `import java.io.*;
 import java.util.*;
@@ -188,12 +189,36 @@ public class Sample1 {
 }`
         } else if(language === "c") {
             ruby_textarea.value = `#include <stdio.h>
+
 int main(int argc, char *argv[]) {
     
 }`
         } else {
             ruby_textarea.value = "";
         }
+    }
+
+    function CurrentHelpDisplayLanguageCheck() {
+        for(let i = 0; i < program_languages.length; i++) {
+            let language = program_languages[i];
+            let elem = document.getElementById(`${language}_help_ul`);
+            if(getComputedStyle(elem).display === "block") {
+                return language;
+            }
+        }
+    }
+
+    function HelpDisplayChange(selected_language, old_language) {
+        document.getElementById(`${old_language}_help_ul`).style.display = "none";
+        document.getElementById(`${selected_language}_help_ul`).style.display = "block";
+    }
+
+    function ProgramSelect(event) {
+        let selected_language = event.currentTarget.value;
+        FrameWorkInsert(selected_language);
+        let old_language = CurrentHelpDisplayLanguageCheck();
+        HelpDisplayChange(selected_language, old_language);
+        document.getElementById("program_language_help_input").value = selected_language;
     }
 
     window.addEventListener("DOMContentLoaded", () => {

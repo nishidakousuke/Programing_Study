@@ -1,0 +1,9 @@
+【フォーマット】
+**************
+#include <stdio.h>
+
+int printf(const char *fmt, ...);
+int fprintf(FILE *stream, const char *fmt, ...);
+**************
+
+【説明】

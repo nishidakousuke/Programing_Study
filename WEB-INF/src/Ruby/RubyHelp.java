@@ -15,6 +15,7 @@ public class RubyHelp extends HttpServlet {
 
         String file_content = "";
         try {
+            String program_language = request.getParameter("program_language");
             String ruby_help_content = request.getParameter("ruby_help_content");
             String code_contents = request.getParameter("ruby_help_source");
             int delimiter_index = code_contents.indexOf("qwer");
@@ -33,6 +34,7 @@ public class RubyHelp extends HttpServlet {
             request.setAttribute("file_content", file_content);
             request.setAttribute("code_contents1", code_contents1);
             request.setAttribute("code_contents2", code_contents2);
+            request.setAttribute("program_language", program_language);
             request.getRequestDispatcher("code_input.jsp").forward(request, response);
 
         } catch (Exception e) {
