@@ -11,7 +11,7 @@
     let file_content_flag;
     let help_all;
     let program_select;
-    let program_languages = ["ruby", "c"];
+    let program_languages = ["ruby", "python3", "c", "java"];
 
     function render() {
         requestAnimationFrame(render);
@@ -163,6 +163,7 @@
     // 実行したプログラミング言語を実行後に初期値として画面に表示させる
     function ProgrammingLanguageFixed() {
         let program_language = document.getElementById("program_language").innerHTML;
+        if(program_language === "") return;
         let select = document.getElementById("select_program_language");
         let option_num = select.children.length;
         for(let i = 0; i < option_num; i++) {
@@ -170,6 +171,7 @@
                 select.children[i].selected = true;
             }
         }
+        HelpDisplayChange(program_language, "ruby");
     }
 
     function TextAreaCodeInsert() {
@@ -198,6 +200,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    // 現在映し出されているヘルプ画面がなんの言語なのかを返す
     function CurrentHelpDisplayLanguageCheck() {
         for(let i = 0; i < program_languages.length; i++) {
             let language = program_languages[i];
@@ -208,17 +211,20 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    // 選ばれたプログラミング言語のヘルプ画面に切り替える
     function HelpDisplayChange(selected_language, old_language) {
         document.getElementById(`${old_language}_help_ul`).style.display = "none";
         document.getElementById(`${selected_language}_help_ul`).style.display = "block";
     }
 
+    // プログラミング言語を変更したときに発火する
     function ProgramSelect(event) {
         let selected_language = event.currentTarget.value;
         FrameWorkInsert(selected_language);
         let old_language = CurrentHelpDisplayLanguageCheck();
         HelpDisplayChange(selected_language, old_language);
         document.getElementById("program_language_help_input").value = selected_language;
+        console.log()
     }
 
     window.addEventListener("DOMContentLoaded", () => {

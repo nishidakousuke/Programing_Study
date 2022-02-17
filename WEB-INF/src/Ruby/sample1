@@ -1,5 +1,5 @@
-def add(a, b)
-   a + b 
-end
+#include <stdio.h>
 
-puts add(2, 5)
+int main(int argc, char *argv[]) {
+    
+}

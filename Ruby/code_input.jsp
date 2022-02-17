@@ -54,6 +54,14 @@
     display: none;
 }
 
+#python3_help_ul {
+    display: none;
+}
+
+#java_help_ul {
+    display: none;
+}
+
 </style>
 <script src="<%= request.getContextPath() %>/js/Ruby/code_input.js"></script>
 </head>
@@ -112,6 +120,20 @@
 <li>出力関数</li>
 <ul>
 <li value="printf">printf(3)/fprintf(3)</li>
+</ul>
+<li>配列</li>
+</ul>
+<ul id="python3_help_ul">
+<li>出力関数</li>
+<ul>
+<li value="print">print</li>
+</ul>
+<li>配列</li>
+</ul>
+<ul id="java_help_ul">
+<li>出力関数</li>
+<ul>
+<li value="system_out_println">System.out.println</li>
 </ul>
 <li>配列</li>
 </ul>

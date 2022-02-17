@@ -31,6 +31,8 @@ public class RubyHelp extends HttpServlet {
             }
             fr.close();
 
+            System.out.println(program_language);
+
             request.setAttribute("file_content", file_content);
             request.setAttribute("code_contents1", code_contents1);
             request.setAttribute("code_contents2", code_contents2);
