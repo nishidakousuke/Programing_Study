@@ -1,1 +1,1 @@
-insert into price values(null, 150);
+create table dummy2 (id int, name varchar(100));

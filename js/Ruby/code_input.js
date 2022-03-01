@@ -224,7 +224,6 @@ int main(int argc, char *argv[]) {
         let old_language = CurrentHelpDisplayLanguageCheck();
         HelpDisplayChange(selected_language, old_language);
         document.getElementById("program_language_help_input").value = selected_language;
-        console.log()
     }
 
     window.addEventListener("DOMContentLoaded", () => {
