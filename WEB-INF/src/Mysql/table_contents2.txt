@@ -1,4 +1,0 @@
-dummy1
-item
-price
-product

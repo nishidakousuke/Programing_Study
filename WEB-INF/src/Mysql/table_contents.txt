@@ -1,5 +1,0 @@
-Tables_in_programming
-dummy1
-item
-price
-product
